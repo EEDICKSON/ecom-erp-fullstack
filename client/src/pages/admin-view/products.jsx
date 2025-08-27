@@ -45,7 +45,6 @@ function AdminProducts() {
         image: uploadedImageUrl,
       })
     ).then((data) => {
-      console.log(data);
       if (data?.payload?.success) {
         dispatch(fetchAllProducts());
         setOpenCreateProductsDialog(false);
@@ -62,6 +61,8 @@ function AdminProducts() {
     dispatch(fetchAllProducts());
   }, [dispatch]);
 
+  console.log(productList, uploadedImageUrl, productList);
+
   return (
     <Fragment>
       <div className="mb-5 w-full flex justify-end">
@@ -69,7 +70,13 @@ function AdminProducts() {
           Add New Products
         </Button>
       </div>
-      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4"></div>
+      <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-4">
+        {/* {productList && productList.length > 0
+          ? productList.map((productItem) => (
+              <AdminProductTitle product={productItem} />
+            ))
+          : null} */}
+      </div>
       <Sheet
         open={openCreateProductsDialog}
         onOpenChange={() => {
